@@ -133,9 +133,9 @@ const player = {
 };
 const SPAWN = { x: player.x, y: player.y };
 
-// Movement tuned slightly slower/floatier than before per feedback.
-const MOVE_ACCEL   = 0.45;  // was 0.6
-const MOVE_MAX      = 3.3;  // was 4.2
+// Higher acceleration and top speed keep touch-and-hold movement responsive.
+const MOVE_ACCEL   = 0.7;
+const MOVE_MAX      = 5.2;
 const FRICTION      = 0.82;
 const GRAVITY        = 0.7;
 const JUMP_VELOCITY  = -13;
