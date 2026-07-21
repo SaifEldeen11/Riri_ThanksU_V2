@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Pixel Quest — Treasure Run</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-wrapper">
+    <h1 id="game-title">PIXEL QUEST</h1>
+    <p id="game-instructions">Arrow Keys / A D to move · Space / ↑ to jump · Reach the chest!</p>
+
+    <div id="canvas-container">
+      <canvas id="gameCanvas" width="800" height="480"></canvas>
+
+      <!-- Candy that pops out of the chest on win -->
+      <div id="candy-popup">🍬</div>
+
+      <!-- Victory modal -->
+      <div id="victory-modal" class="hidden">
+        <div class="pixel-card">
+          <div class="pixel-card-inner">
+            <div class="candy-big">🍬</div>
+            <!-- dir="auto" lets the browser correctly bidi-render the mixed Arabic/English line -->
+            <p id="victory-text" dir="auto">" انتي قلتي مترضهاش في الحقيقه مجبتيش سيره الموبايل 😂 بجد جيتي في الوقت المثالي عشان الحاله كانت ضاربه. Thank u this is the least that i can do for u  💕 "</p>
+            <button id="play-again-btn">PLAY AGAIN</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loss modal -->
+      <div id="loss-modal" class="hidden">
+        <div class="pixel-card">
+          <div class="pixel-card-inner">
+            <div class="candy-big"></div>
+            <p id="loss-text" dir="auto">لا ما الرساله بتظهر لما تكسبي مش هينفع كده 😅 Play again تحت اهيه</p>
+            <button id="try-again-btn">PLAY AGAIN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile on-screen controls -->
+    <div id="mobile-controls">
+      <div class="control-group">
+        <button id="btn-left" class="pixel-btn" aria-label="Move left">◀</button>
+        <button id="btn-right" class="pixel-btn" aria-label="Move right">▶</button>
+      </div>
+      <div class="control-group">
+        <button id="btn-jump" class="pixel-btn pixel-btn-jump" aria-label="Jump">JUMP</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/pixelArt.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
