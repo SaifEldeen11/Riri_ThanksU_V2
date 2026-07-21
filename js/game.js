@@ -140,6 +140,7 @@ const FRICTION      = 0.82;
 const GRAVITY        = 0.7;
 const JUMP_VELOCITY  = -13;
 const MAX_FALL_SPEED = 18;
+const PHYSICS_STEP_MS = 1000 / 60;
 
 // ---- Camera ---------------------------------------------------------------
 const camera = { x: 0 };
@@ -551,8 +552,19 @@ function setupCanvasDPR() {
 }
 
 // ---- Main loop ------------------------------------------------------------
-function loop() {
-  updatePlayer();
+let lastFrameTime = 0;
+let physicsAccumulator = 0;
+
+function loop(timestamp) {
+  if (!lastFrameTime) lastFrameTime = timestamp;
+  physicsAccumulator += Math.min(timestamp - lastFrameTime, 100);
+  lastFrameTime = timestamp;
+
+  while (physicsAccumulator >= PHYSICS_STEP_MS) {
+    updatePlayer();
+    physicsAccumulator -= PHYSICS_STEP_MS;
+  }
+
   updateCamera();
 
   ctx.clearRect(0, 0, GAME_W, GAME_H);
